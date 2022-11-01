@@ -12,7 +12,7 @@ class NormarUserInline(admin.StackedInline):
     # model = NormalUser
     model = NormalUser
     can_delete = False
-    verbose_name = "Users"
+    verbose_name_plural = "Users"
 
 
 class CustomNormalUserSet(UserAdmin):
@@ -23,3 +23,6 @@ admin.site.unregister(
     User,
 )
 admin.site.register(User, CustomNormalUserSet)
+
+
+admin.site.register(NormalUser)

@@ -2,12 +2,12 @@ from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+# Create your views here.
 
-class LogOutView(APIView):
-    """log out view for user"""
 
-    def post(self, req):
-        req.user.auth_token.delete()
+class LogoutView(APIView):
+    def post(self, request, format=None):
+        request.user.auth_token.delete()
         return Response(status=HTTP_200_OK)
 
 

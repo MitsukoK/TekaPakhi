@@ -75,9 +75,10 @@ class NewUser(AbstractUser):
         blank=True,
         region="BD",
     )  # type: ignore
-    client_identity_id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False
-    )
+    # client_identity_id = models.UUIDField(
+    #     primary_key=True, default=uuid.uuid4, editable=False
+    # )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # client current balance
     current_balance = models.IntegerField(
         validators=[

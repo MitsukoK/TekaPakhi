@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
-import uuid
+
+# import uuid
 from phonenumber_field.modelfields import PhoneNumberField
 from multiselectfield import MultiSelectField
 
@@ -78,7 +79,7 @@ class NewUser(AbstractUser):
     # client_identity_id = models.UUIDField(
     #     primary_key=True, default=uuid.uuid4, editable=False
     # )
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # client current balance
     current_balance = models.IntegerField(
         validators=[

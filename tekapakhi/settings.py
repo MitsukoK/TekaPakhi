@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "banking",
+    # "banking",
     "landing",
     "userapp",
     "extras",
@@ -144,3 +144,6 @@ REST_FRAMEWORK = {
     # ],
 }
 django_on_heroku.settings(locals())
+
+# custom user model
+AUTH_USER_MODEL = "userapp.NewUser"

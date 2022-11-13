@@ -1,28 +1,48 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
-
-
-from .models import NormalUser
+from .models import NewUser
 
 # Register your models here.
 
 
-class NormarUserInline(admin.StackedInline):
-    # model = NormalUser
-    model = NormalUser
-    can_delete = False
-    verbose_name_plural = "Users"
+# class CustomUserAdmin(UserAdmin):
+#     fieldsets = (
+#         *UserAdmin.fieldsets,
+#         (
+#             "Additional Info",
+#             {
+#                 "fields": (
+#                     "age",
+#                     "nickname",
+#                 ),
+#             },
+#         ),  # type: ignore
+#     )
 
-
-class CustomNormalUserSet(UserAdmin):
-    inlines = (NormarUserInline,)
-
-
-admin.site.unregister(
-    User,
+fields = list(UserAdmin.fieldsets)
+fields[1] = (  # type: ignore
+    "Personal info",
+    {
+        "fields": (
+            "first_name",
+            "last_name",
+            "email",
+            # "age",
+            # "nickname",
+            "phone_number",
+            "user_pin",
+            "current_balance",
+            # "types",
+            # "client_identity_id",
+            #! mobile_banking, mobile_recharge, bank, gift_card
+            "mobile_banking",
+            "mobile_recharge",
+            "bank",
+            # "gift_card",
+        )
+    },
 )
-admin.site.register(User, CustomNormalUserSet)
+UserAdmin.fieldsets = tuple(fields)
 
 
-admin.site.register(NormalUser)
+admin.site.register(NewUser, UserAdmin)

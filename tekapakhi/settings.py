@@ -30,6 +30,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = [".vercel.app", "127.0.0.1"]
 ALLOWED_HOSTS = ["takapakhi.herokuapp.com", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://takapakhi.herokuapp.com"]
 
 
 # Application definition
@@ -125,8 +126,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
 STATIC_URL = "static/"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    # '/var/www/static/',
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
 
 # Default primary key field type
